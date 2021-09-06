@@ -1,3 +1,14 @@
+import oracle.nosql.driver.NoSQLHandle;
+import oracle.nosql.driver.NoSQLHandleConfig;
+import oracle.nosql.driver.NoSQLHandleFactory;
+import oracle.nosql.driver.Region;
+import oracle.nosql.driver.iam.SignatureProvider;
+import oracle.nosql.driver.ops.*;
+import oracle.nosql.driver.values.JsonOptions;
+import oracle.nosql.driver.values.MapValue;
+
+import java.io.File;
+
 public class HelloWorld {
     private static NoSQLHandle getNoSQLConnection() {
 
@@ -5,7 +16,7 @@ public class HelloWorld {
                 "Your tenant OCID goes here",
                 "Your user OCID goes here",
                 "Your key fingerprint goes here",
-                new File("~/.oci/oci_api_key.pem"), // path to your private key file
+                new File("~/.oci/oci_api_key.pem"),
                 "The pass phrase for your key goes here".toCharArray());
         return(NoSQLHandleFactory.createNoSQLHandle(
                 new NoSQLHandleConfig(Region.US_PHOENIX_1, authProvider)));
