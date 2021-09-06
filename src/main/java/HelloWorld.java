@@ -23,25 +23,20 @@ public class HelloWorld {
     }
 
 
-    private static String readOneRecord(NoSQLHandle serviceHandle) {
+    private static void readOneRecord(NoSQLHandle serviceHandle) {
         GetRequest getRequest = new GetRequest();
-        getRequest.setKey(new MapValue().put("ticketNo", "1762386738153"));
+        getRequest.setKey(new MapValue().put("ticketNo", "176233524485"));
         getRequest.setTableName("demo");
-
-        long before = System.currentTimeMillis();
         GetResult gr = serviceHandle.get(getRequest);
-
         if (gr != null) {
-            return (gr.getValue().toJson(new JsonOptions()));
-        } else {
-            return(null);
+            System.out.println(gr.getValue().toJson(new JsonOptions()));
         }
     }
 
     public static void main (String args[]) {
         try {
             NoSQLHandle handle = getNoSQLConnection();
-            System.out.println(readOneRecord(handle));
+            readOneRecord(handle);
             handle.close();
             System.exit(0);
         } catch (Exception e) {
