@@ -37,6 +37,7 @@ public class HelloWorld {
     public static void main (String args[]) {
         try {
             NoSQLHandle handle = getNoSQLConnection();
+            handle.setDefaultCompartment(System.getenv("NOSQL_COMP_ID") ;
             System.out.println(readOneRecord(handle));
             System.exit(0);
         } catch (Exception e) {
