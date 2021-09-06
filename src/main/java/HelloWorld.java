@@ -25,13 +25,7 @@ public class HelloWorld {
 
 
     private static void readDemo(NoSQLHandle serviceHandle) {
-        QueryRequest queryRequest = new QueryRequest().
-                setStatement("SELECT * FROM demo");
-
-        /* Queries can return partial results. It is necessary to loop,
-         * reissuing the request until it is "done"
-         */
-
+        QueryRequest queryRequest = new QueryRequest().setStatement("SELECT * FROM demo");
         do {
             QueryResult queryResult = serviceHandle.query(queryRequest);
 
