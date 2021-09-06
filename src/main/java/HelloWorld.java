@@ -12,12 +12,8 @@ import java.io.File;
 public class HelloWorld {
     private static NoSQLHandle getNoSQLConnection() {
 
-        SignatureProvider authProvider = new SignatureProvider(
-                "Your tenant OCID goes here",
-                "Your user OCID goes here",
-                "Your key fingerprint goes here",
-                new File("~/.oci/oci_api_key.pem"),
-                "The pass phrase for your key goes here".toCharArray());
+        SignatureProvider authProvider =
+                SignatureProvider.createWithInstancePrincipalForDelegation(System.getenv(OCI_obo_token));
         return(NoSQLHandleFactory.createNoSQLHandle(
                 new NoSQLHandleConfig(Region.US_PHOENIX_1, authProvider)));
     }
