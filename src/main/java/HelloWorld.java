@@ -38,7 +38,7 @@ public class HelloWorld {
             /* process current set of results */
             List<MapValue> results = queryResult.getResults();
             for (MapValue qval : results) {
-                System.out.println("\t" + qval.toString());
+                System.out.println( qval.toString());
             }
         } while (!queryRequest.isDone());
     }
