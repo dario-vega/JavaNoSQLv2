@@ -23,20 +23,29 @@ public class HelloWorld {
     }
 
 
-    private static void readOneRecord(NoSQLHandle serviceHandle) {
-        GetRequest getRequest = new GetRequest();
-        getRequest.setKey(new MapValue().put("ticketNo", "176233524485"));
-        getRequest.setTableName("demo");
-        GetResult gr = serviceHandle.get(getRequest);
-        if (gr != null) {
-            System.out.println(gr.getValue().toJson(new JsonOptions()));
-        }
+    private static void readDemo(NoSQLHandle serviceHandle) {
+        QueryRequest queryRequest = new QueryRequest().
+                setStatement("SELECT * FROM demo");
+
+        /* Queries can return partial results. It is necessary to loop,
+         * reissuing the request until it is "done"
+         */
+
+        do {
+            QueryResult queryResult = serviceHandle.query(queryRequest);
+
+            /* process current set of results */
+            List<MapValue> results = queryResult.getResults();
+            for (MapValue qval : results) {
+                System.out.println("\t" + qval.toString());
+            }
+        } while (!queryRequest.isDone());
     }
 
     public static void main (String args[]) {
         try {
             NoSQLHandle handle = getNoSQLConnection();
-            readOneRecord(handle);
+            readDemo(handle);
             handle.close();
             System.exit(0);
         } catch (Exception e) {
