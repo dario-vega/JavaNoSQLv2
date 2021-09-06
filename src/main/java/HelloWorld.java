@@ -42,7 +42,7 @@ public class HelloWorld {
         try {
             NoSQLHandle handle = getNoSQLConnection();
             System.out.println(readOneRecord(handle));
-            handle.close()
+            handle.close();
             System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
