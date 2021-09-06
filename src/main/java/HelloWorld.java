@@ -13,7 +13,7 @@ public class HelloWorld {
     private static NoSQLHandle getNoSQLConnection() {
 
         SignatureProvider authProvider =
-                SignatureProvider.createWithInstancePrincipalForDelegation(System.getenv(OCI_obo_token));
+                SignatureProvider.createWithInstancePrincipalForDelegation(System.getenv("OCI_obo_token"));
         return(NoSQLHandleFactory.createNoSQLHandle(
                 new NoSQLHandleConfig(Region.US_PHOENIX_1, authProvider)));
     }
