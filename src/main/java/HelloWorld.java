@@ -8,6 +8,7 @@ import oracle.nosql.driver.values.JsonOptions;
 import oracle.nosql.driver.values.MapValue;
 
 import java.io.File;
+import java.util.List;
 
 public class HelloWorld {
     private static NoSQLHandle getNoSQLConnection() {
