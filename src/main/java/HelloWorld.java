@@ -14,8 +14,11 @@ public class HelloWorld {
 
         SignatureProvider authProvider =
                 SignatureProvider.createWithInstancePrincipalForDelegation(System.getenv("OCI_obo_token"));
-        NoSQLHandleConfig config = new NoSQLHandleConfig(Region.US_PHOENIX_1, authProvider);
+        NoSQLHandleConfig config = new NoSQLHandleConfig(System.getenv("OCI_REGION"), authProvider);
         config.setDefaultCompartment(System.getenv("NOSQL_COMP_ID")) ;
+        System.out.println("Application Running");
+        System.out.println(System.getenv("OCI_REGION"));
+        System.out.println(System.getenv("NOSQL_COMP_ID"));
         return( NoSQLHandleFactory.createNoSQLHandle(config) );
     }
 
@@ -39,6 +42,7 @@ public class HelloWorld {
         try {
             NoSQLHandle handle = getNoSQLConnection();
             System.out.println(readOneRecord(handle));
+            handle.close()
             System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
