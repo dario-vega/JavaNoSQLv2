@@ -41,11 +41,11 @@ public class HelloWorld {
         try {
             NoSQLHandle handle = getNoSQLConnection();
             readDemo(handle);
-            handle.close();
-            System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
-            System.exit(-1);
+        }
+        finally{
+            handle.close();
         }
     }
 }
