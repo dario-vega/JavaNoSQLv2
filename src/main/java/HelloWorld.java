@@ -26,7 +26,7 @@ public class HelloWorld {
 
     private static void readDemo(NoSQLHandle serviceHandle) {
         QueryRequest queryRequest = new QueryRequest().setStatement("SELECT * FROM demo");
-        try (QueryIterableResult results = handle.queryIterable(queryRequest)) {
+        try (QueryIterableResult results = serviceHandle.queryIterable(queryRequest)) {
                 for (MapValue qval : results) {
                     System.out.println( qval.toString());
                 }
