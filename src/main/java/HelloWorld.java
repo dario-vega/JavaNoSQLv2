@@ -48,7 +48,7 @@ public class HelloWorld {
             e.printStackTrace();
         }
         finally{
-            handle.close();
+            //handle.close();
         }
     }
 }
