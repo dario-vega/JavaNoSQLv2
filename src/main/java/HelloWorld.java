@@ -26,15 +26,18 @@ public class HelloWorld {
 
     private static void readDemo(NoSQLHandle serviceHandle) {
         QueryRequest queryRequest = new QueryRequest().setStatement("SELECT * FROM demo");
-        do {
-            QueryResult queryResult = serviceHandle.query(queryRequest);
-
-            /* process current set of results */
-            List<MapValue> results = queryResult.getResults();
-            for (MapValue qval : results) {
-                System.out.println( qval.toString());
-            }
-        } while (!queryRequest.isDone());
+        try {
+            do {
+                QueryResult queryResult = serviceHandle.query(queryRequest);
+                /* process current set of results */
+                List<MapValue> results = queryResult.getResults();
+                for (MapValue qval : results) {
+                    System.out.println( qval.toString());
+                }
+            } while (!queryRequest.isDone());
+         } finally {
+            queryRequest.close();
+         }
     }
 
     public static void main (String args[]) {
