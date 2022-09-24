@@ -1,6 +1,6 @@
 # JavaNoSQLv2
 
-# JavaNoSQLv2
+# on-premise Secure Cluster
 
 Execute a Java Program using delegationToken from Cloud Shell
 
@@ -14,7 +14,7 @@ mvn exec:java -Djavax.net.ssl.trustStore=/home/opc/proxy/driver.trust -Djavax.ne
 
 ````
 
-# JavaNoSQLv2
+# using delegationToken from Cloud Shell
 
 Execute a Java Program using delegationToken from Cloud Shell
 
