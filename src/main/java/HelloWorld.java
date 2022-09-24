@@ -1,6 +1,9 @@
 import oracle.nosql.driver.NoSQLHandle;
 import oracle.nosql.driver.NoSQLHandleConfig;
 import oracle.nosql.driver.NoSQLHandleFactory;
+import oracle.nosql.driver.kv.StoreAccessTokenProvider ;
+
+
 import oracle.nosql.driver.Region;
 import oracle.nosql.driver.iam.SignatureProvider;
 import oracle.nosql.driver.ops.*;
@@ -13,30 +16,24 @@ import java.util.List;
 public class HelloWorld {
     private static NoSQLHandle getNoSQLConnection() {
 
-        SignatureProvider authProvider =
-                SignatureProvider.createWithInstancePrincipalForDelegation(System.getenv("OCI_obo_token"));
-        NoSQLHandleConfig config = new NoSQLHandleConfig(System.getenv("OCI_REGION"), authProvider);
-        config.setDefaultCompartment(System.getenv("NOSQL_COMP_ID")) ;
-        System.out.println("Application Running");
-        System.out.println(System.getenv("OCI_REGION"));
-        System.out.println(System.getenv("NOSQL_COMP_ID"));
+        char[] pwd = {'D', 'r', 'i', 'v', 'e', 'r', 'P', 'a', 's', 's' , '@', '@', '1', '2', '3'};
+
+        NoSQLHandleConfig config = new NoSQLHandleConfig("https://cwypld-4025.bell.corp.bce.ca:8443");
+
+        config.setAuthorizationProvider(new StoreAccessTokenProvider("driver_user", pwd));
+
         return( NoSQLHandleFactory.createNoSQLHandle(config) );
     }
 
 
     private static void readDemo(NoSQLHandle serviceHandle) {
-        QueryRequest queryRequest = new QueryRequest().setStatement("SELECT * FROM demo");
-        try {
-            do {
-                QueryResult queryResult = serviceHandle.query(queryRequest);
-                /* process current set of results */
-                List<MapValue> results = queryResult.getResults();
+        String stmt = "SELECT * FROM blogtable LIMIT 10";
+        QueryRequest queryRequest = new QueryRequest().setStatement(stmt);
+        System.out.println(stmt);
+        try (QueryIterableResult results = serviceHandle.queryIterable(queryRequest)) {
                 for (MapValue qval : results) {
                     System.out.println( qval.toString());
                 }
-            } while (!queryRequest.isDone());
-         } finally {
-            queryRequest.close();
          }
     }
 
