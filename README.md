@@ -2,16 +2,13 @@
 
 # on-premise Secure Cluster
 
-Execute a Java Program using delegationToken from Cloud Shell
+Execute a Java Program using an external certificate - Javax.net.ssl.trustStore and javax.net.ssl.trustStorePassword
 
 ````
-
 git clone https://github.com/dario-vega/JavaNoSQLv2.git
 cd ~/JavaNoSQLv2
 mvn compile
 mvn exec:java -Djavax.net.ssl.trustStore=/home/opc/proxy/driver.trust -Djavax.net.ssl.trustStorePassword=123456 -Dexec.mainClass="HelloWorld"
-
-
 ````
 
 # using delegationToken from Cloud Shell
