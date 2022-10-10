@@ -18,7 +18,7 @@ public class HelloWorld {
 
         char[] pwd = {'D', 'r', 'i', 'v', 'e', 'r', 'P', 'a', 's', 's' , '@', '@', '1', '2', '3'};
 
-        NoSQLHandleConfig config = new NoSQLHandleConfig("https://cwypld-4025.bell.corp.bce.ca:8443");
+        NoSQLHandleConfig config = new NoSQLHandleConfig("https://node1-nosql:8443");
 
         config.setAuthorizationProvider(new StoreAccessTokenProvider("driver_user", pwd));
 
