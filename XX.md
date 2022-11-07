@@ -342,4 +342,3 @@ java -Dtable=my_table_2 -DreadUnits=10 -DwriteUnits=15 -DstorageGb=3 -jar ./lib/
   The CreateLoadComplexTable example program executes software from different third-party libraries, where each library defines its own set of loggers with different namespaces. For convenience, this example provides two logging configuration files as part of the release; one to configure logging mechanisms based on java.util.logging, and one for loggers based on Log4j2.
 
   By default, the logger configuration files provided with the utility are designed to produce minimal output as the program executes. If you wish to see more verbose output from the various components employed during execution, then you should increase the logging levels of the specific loggers referenced in the appropriate logging configuration file.
-
