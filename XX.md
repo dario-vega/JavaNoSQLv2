@@ -38,27 +38,27 @@ To build and/or execute the program, the following requirements must be satisfie
   1. If the program will be run from an OCI Compute Instance, and authentication with the Oracle NoSQL 
   Database Cloud Service will be performed using an OCI Instance Principal, then do the following:
 
-	- [Create a Dynamic Group for the OCI Compute Instance](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingdynamicgroups.htm)
-	- [Create a Policy with Appropriate Permissions for the Dynamic Group](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm#Creating)
-  
-	The policy you create should allow the Dynamic Group you created to access tables and rows in the Oracle NoSQL Cloud Service. For example, the policy would look something like:
-	````
-	Allow dynamic-group <dyn-grp-name> to manage nosql-tables in compartment <compartment-name>
-	Allow dynamic-group <dyn-grp-name> to manage nosql-rows in compartment <compartment-name>
-	````
-					
-	where the token `<dyn-grp-name>` should be replaced with the name of the Dynamic Group you created, and the token `<compartment-name>` 
-	should be replaced with the name of the compartment in which the OCI Compute Instance was launched. 
+   - [Create a Dynamic Group for the OCI Compute Instance](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingdynamicgroups.htm)
+   - [Create a Policy with Appropriate Permissions for the Dynamic Group](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm#Creating)
+   
+   The policy you create should allow the Dynamic Group you created to access tables and rows in the Oracle NoSQL Cloud Service. For example, the policy would look something like:
+   ````
+   Allow dynamic-group <dyn-grp-name> to manage nosql-tables in compartment <compartment-name>
+   Allow dynamic-group <dyn-grp-name> to manage nosql-rows in compartment <compartment-name>
+   ````
+   				
+   where the token `<dyn-grp-name>` should be replaced with the name of the Dynamic Group you created, and the token `<compartment-name>` 
+   should be replaced with the name of the compartment in which the OCI Compute Instance was launched. 
 
 	2. If the program will be run from the OCI Command Shell, an OCI Compute Instance, or your own local environment, and authentication 
   will be performed using your private credentials, then you need to acquire and install the following 
   items (see [Acquiring Credentials](https://docs.oracle.com/en-us/iaas/nosql-database/doc/acquiring-credentials.html)):
 
-	- OCID of the tenancy.
-	- OCID of the user calling the API (that is, the user who executes the program).
-	- Fingerprint for the key pair being used.
-	- Full path and filename of the private key.
-	- If the private key is encrypted, the passphrase used when encrypting the key.
+  - OCID of the tenancy.
+  - OCID of the user calling the API (that is, the user who executes the program).
+  - Fingerprint for the key pair being used.
+  - Full path and filename of the private key.
+  - If the private key is encrypted, the passphrase used when encrypting the key.
 
 # Building the Example
 
