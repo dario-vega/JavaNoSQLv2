@@ -38,8 +38,8 @@ To build and/or execute the program, the following requirements must be satisfie
   1. If the program will be run from an OCI Compute Instance, and authentication with the Oracle NoSQL 
   Database Cloud Service will be performed using an OCI Instance Principal, then do the following:
 
-  - [Create a Dynamic Group for the OCI Compute Instance](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingdynamicgroups.htm)
-  - [Create a Policy with Appropriate Permissions for the Dynamic Group](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm#Creating)
+	- [Create a Dynamic Group for the OCI Compute Instance](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingdynamicgroups.htm)
+	- [Create a Policy with Appropriate Permissions for the Dynamic Group](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm#Creating)
   
 	The policy you create should allow the Dynamic Group you created to access tables and rows in the Oracle NoSQL Cloud Service. For example, the policy would look something like:
 	````
@@ -50,15 +50,15 @@ To build and/or execute the program, the following requirements must be satisfie
 	where the token `<dyn-grp-name>` should be replaced with the name of the Dynamic Group you created, and the token `<compartment-name>` 
 	should be replaced with the name of the compartment in which the OCI Compute Instance was launched. 
 
-  2. If the program will be run from the OCI Command Shell, an OCI Compute Instance, or your own local environment, and authentication 
+	2. If the program will be run from the OCI Command Shell, an OCI Compute Instance, or your own local environment, and authentication 
   will be performed using your private credentials, then you need to acquire and install the following 
   items (see [Acquiring Credentials](https://docs.oracle.com/en-us/iaas/nosql-database/doc/acquiring-credentials.html)):
 
-  - OCID of the tenancy.
-  - OCID of the user calling the API (that is, the user who executes the program).
-  - Fingerprint for the key pair being used.
-  - Full path and filename of the private key.
-  - If the private key is encrypted, the passphrase used when encrypting the key.
+	- OCID of the tenancy.
+	- OCID of the user calling the API (that is, the user who executes the program).
+	- Fingerprint for the key pair being used.
+	- Full path and filename of the private key.
+	- If the private key is encrypted, the passphrase used when encrypting the key.
 
 # Building the Example
 
@@ -75,14 +75,14 @@ By default, the command above executes the following goals: `mvn clean dependenc
 Specifically, executing the command above is equivalent to executing the command,
 
 ````
- mvn clean dependency:copy-dependencies package
+mvn clean dependency:copy-dependencies package
 ````
 
 These goals will perform the following actions:
 
   - remove the target directory created and populated by the prior build
   - retrieve all specified dependencies and install them in your local Maven repository (for example, `~/.m2/repository`)
-  - copy the retrieved dependencies under the target/dependencies directory
+  - copy the retrieved dependencies under the `target/dependencies` directory
   - compile the source
   - execute the unit tests
   - generate the javadoc
@@ -100,7 +100,7 @@ to create and populate a table in the Oracle NoSQL Cloud Service. To do this, yo
 cd <base>/nosql-examples/examples-nosql-java-sdk/CreateLoadComplexTable
 java -Djava.util.logging.config.file=./src/main/resources/logging/java-util-logging.properties \
      -Dlog4j.configurationFile=file:./src/main/resources/logging/log4j2-complextable.properties \
-	 -jar ./target/dependencies/complextable-<version>.jar -config ~/.oci/<your-local-environment-config.json>
+     -jar ./target/dependencies/complextable-<version>.jar -config ~/.oci/<your-local-environment-config.json>
 ````
 
 For details on the configuration file that must be input to the program, see the section below titled, 'Configurating the Example'.
@@ -146,7 +146,7 @@ Once installed, if you have satisfied the requirements described above for inter
 cd complextable-1.0.0/complextable
 java -Djava.util.logging.config.file=./src/main/resources/logging/java-util-logging.properties \
      -Dlog4j.configurationFile=file:./src/main/resources/logging/log4j2-complextable.properties] \
-	 -jar ./lib/complextable-1.0.0.jar -config~/.oci/<your-complextable-config.json>
+     -jar ./lib/complextable-1.0.0.jar -config~/.oci/<your-complextable-config.json>
 ````
 
 Note that the same command is used whether you are executing from the OCI Command Shell, an OCI Compute Instance, or your local development environment. For details on the configuration file that must be input to the program, see the next section titled, 'Configurating the Example'.
@@ -330,7 +330,8 @@ java -jar ./lib/complextable-1.0.0.jar -config ~/.oci/my-config.json
   Next, suppose you wish to create a new table named "my_table_2" with 51 rows. And suppose you wish to allocate to that new table, 10 read units, 15 write units, and 3 Gbs maximum storage. To do this, you can create a new configuration file with new values, or you can use the configuration file above, but override the deired configuration entries on the command line. For example,
 
 ````
-java -Dtable=my_table_2 -DreadUnits=10 -DwriteUnits=15 -DstorageGb=3 -jar ./lib/complextable-1.0.0.jar -config ~/.oci/my-config.json
+java -Dtable=my_table_2 -DreadUnits=10 -DwriteUnits=15 -DstorageGb=3 \
+     -jar ./lib/complextable-1.0.0.jar -config ~/.oci/my-config.json
 ````
 
   This feature may be useful when testing or writing scripts that run the utility at regular intervals; using a single configuration file 'template', but overriding the entries you wish to manipulate. 
@@ -342,3 +343,4 @@ java -Dtable=my_table_2 -DreadUnits=10 -DwriteUnits=15 -DstorageGb=3 -jar ./lib/
   The CreateLoadComplexTable example program executes software from different third-party libraries, where each library defines its own set of loggers with different namespaces. For convenience, this example provides two logging configuration files as part of the release; one to configure logging mechanisms based on java.util.logging, and one for loggers based on Log4j2.
 
   By default, the logger configuration files provided with the utility are designed to produce minimal output as the program executes. If you wish to see more verbose output from the various components employed during execution, then you should increase the logging levels of the specific loggers referenced in the appropriate logging configuration file.
+
