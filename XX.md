@@ -50,7 +50,7 @@ To build and/or execute the program, the following requirements must be satisfie
    where the token `<dyn-grp-name>` should be replaced with the name of the Dynamic Group you created, and the token `<compartment-name>` 
    should be replaced with the name of the compartment in which the OCI Compute Instance was launched. 
 
-	2. If the program will be run from the OCI Command Shell, an OCI Compute Instance, or your own local environment, and authentication 
+  2. If the program will be run from the OCI Command Shell, an OCI Compute Instance, or your own local environment, and authentication 
   will be performed using your private credentials, then you need to acquire and install the following 
   items (see [Acquiring Credentials](https://docs.oracle.com/en-us/iaas/nosql-database/doc/acquiring-credentials.html)):
 
