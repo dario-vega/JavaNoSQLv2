@@ -109,7 +109,8 @@ For details on the configuration file that must be input to the program, see the
 
 As described above, the package component of the default goal will run all the unit tests automatically. The test output, including failure information, is logged to the directory, `./target/surefire-reports`
 
-Rather than running all the unit tests, if you wish to change the default behavior with respect to how/what unit tests are run, the various test-related goals described below can be specified instead. Note that when the token 'fqcn' is used below, that token represents the fully-qualified classname of a given test class (for example, nosql.cloud.table.config.ComplexTableConfigurationTest).
+Rather than running all the unit tests, if you wish to change the default behavior with respect to how/what unit tests are run, the various test-related goals described below can be specified instead. 
+Note that when the token `fqcn` is used below, that token represents the fully-qualified classname of a given test class (for example, `nosql.cloud.table.config.ComplexTableConfigurationTest`).
 
 1. To run only the unit tests, but not build or package the release:  `mvn test`
 2. To continue running the remaining tests after encountering failure in a given test:  `mvn -DfailIfNoTests=false test`
