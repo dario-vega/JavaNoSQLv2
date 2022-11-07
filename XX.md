@@ -218,13 +218,13 @@ key_file=</path/to/nosqldb/user/oci/api/privatekey.pem>
 passphrase=<optional-passphrase-used-to-encrypt-nosqldb-user-key>
 ````
 
-  For a credentials file like that shown above, the file must specify at least the "[DEFAULT]" profile; all other profiles are optional. Under any given profile (ex. [DEFAULT], [nosql-tables], etc.), 
+  For a credentials file like that shown above, the file must specify at least the `[DEFAULT]` profile; all other profiles are optional. Under any given profile (ex. `[DEFAULT]`, `[nosql-tables]`, etc.), 
   the profile must specify the entries named, `tenancy`, `user`, `fingerprint`, and `key_file`; otherwise, an error will occur when one of those entries is not specified under the given profile. 
   The entry named `passphrase` is required under a profile only when the key referenced by the associated `key_file` entry is encrypted.
 
   2. region
 
-  The value of the "region" entry specifies the name of the OCI region in which to create the desired table; and must be one of the following names of existing regions in the Oracle Cloud Infrastructure:
+  The value of the `region` entry specifies the name of the OCI region in which to create the desired table; and must be one of the following names of existing regions in the Oracle Cloud Infrastructure:
 
 ````
   af-johannesburg-1
@@ -278,39 +278,39 @@ passphrase=<optional-passphrase-used-to-encrypt-nosqldb-user-key>
 
   The following items are optional in the configuration. When not specified in the configuration, each entry will be set to an appropriate default value, as indicated.
 
-  1. delete (default = "true")
+  1. `delete` (default = "true")
 
   If "true" is specified for the "delete" configuration entry, then all existing rows written to the table by previous executions of the program will first be deleted from the table before adding any new rows. Otherwise, the table will contain both the old rows and the new rows that are generated.
 
-  2. nRows (default = "10")
+  2. `nRows` (default = "10")
 
   Specifies the number of new rows to generate and write to the table. If the entry is not specified, then the default number of rows will be written to the table. 
 
-  3. readUnits (default = "50")
+  3. `readUnits` (default = "50")
 
   Specifies the number of Oracle NoSQL Database Cloud Service read units to allocate to the table being created. If the entry is not specified, then the default number of read units will be allocated to the table. 
 
-  4. writeUnits (default = "50")
+  4. `writeUnits` (default = "50")
 
   Specifies the number of Oracle NoSQL Database Cloud Service write units to allocate to the table being created. If the entry is not specified, then the default number of write units will be allocated to the table. 
 
-  5. storageGb (default = "25")
+  5. `storageGb` (default = "25")
 
   Specifies the maximum storage space (in giga-bytes) to allocate to the table being created. If the entry is not specified, then the default maximum storage space will be allocated to the table. 
 
-  6. ttlDays (default = "1")
+  6. `ttlDays` (default = "1")
 
-  Specifies the time-to-live (ttl, in number of days) to associate with the table that is created. For example, if "3" is specified as the value for the "ttlDays" entry, then any row that has been in the table for at least 3 days will be automatically removed from the table. If this entry is not specified, or if the value specified for the "ttlDays" entry is invalid (negative or non-numeric), then the default number of days will be used when creating the table.
+  Specifies the time-to-live (ttl, in number of days) to associate with the table that is created. For example, if "3" is specified as the value for the `ttlDays` entry, then any row that has been in the table for at least 3 days will be automatically removed from the table. If this entry is not specified, or if the value specified for the `ttlDays` entry is invalid (negative or non-numeric), then the default number of days will be used when creating the table.
   
-  Note that if you wish to disable the ttl mechanism for the table so that the table's rows are never purged, then specify "0" for the value of the "ttlDays" entry.
+  Note that if you wish to disable the ttl mechanism for the table so that the table's rows are never purged, then specify "0" for the value of the `tlDays` entry.
 
-  7. credentialsProfile (default = "DEFAULT")
+  7. `credentialsProfile` (default = "DEFAULT")
 
   Specifies the profile in the credentials file from which to retrieve the credentials to use when authenticating with the Oracle NoSQL Database Cloud Service. If this entry is not specified, then the default profile will be used.
 
 ## Overriding Configuration Entries
 
-  For convenience, each entry in the configuration file can be overridden on the command line by setting a system property with name equal to the name of the configuration entry. For example, suppose your environment is the OCI Command Shell and you have specified the configuration file ~/.oci/my-config.json with contents like, 
+  For convenience, each entry in the configuration file can be overridden on the command line by setting a system property with name equal to the name of the configuration entry. For example, suppose your environment is the OCI Command Shell and you have specified the configuration file `~/.oci/my-config.json` with contents like, 
 ````
 {
     "credentialsType" : "token",
@@ -322,7 +322,7 @@ passphrase=<optional-passphrase-used-to-encrypt-nosqldb-user-key>
     "storageGb" : "25"
 }
 ````
-  Specifying the configuration above when executing the following command will cause the program to authenticate using the OCI Command Shell delegation token when creating and populating a table named "my_table_1"; where the table will have 10 rows (the default), and will be allocated 50 read units, 50 write units, and maximum storage space of 25 Gbs.
+  Specifying the configuration above when executing the following command will cause the program to authenticate using the OCI Command Shell delegation token when creating and populating a table named `my_table_1`; where the table will have 10 rows (the default), and will be allocated 50 read units, 50 write units, and maximum storage space of 25 Gbs.
 
 ````
 java -jar ./lib/complextable-1.0.0.jar -config ~/.oci/my-config.json
