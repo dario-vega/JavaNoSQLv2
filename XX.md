@@ -1,6 +1,6 @@
 # Overview
 
-The CreateLoadComplexTable example program creates a table in the Oracle NoSQL Database Cloud Service and then uses the [Oracle NoSQLDatabase Java SDK](https://docs.oracle.com/en-us/iaas/nosql-database/doc/oracle-nosql-database-java-sdk.html) to populate the table with sample records; where the table that is created consists of all the data types (primitive and complex) currently supported by the NoSQL Cloud Service. This example program is referenced in the [Oracle NoSQL Database Analytics Integrator User Guide](https://docs.oracle.com/en/cloud/paas/nosql-cloud/zsons/index.html#articletitle).
+The `CreateLoadComplexTable` example program creates a table in the Oracle NoSQL Database Cloud Service and then uses the [Oracle NoSQLDatabase Java SDK](https://docs.oracle.com/en-us/iaas/nosql-database/doc/oracle-nosql-database-java-sdk.html) to populate the table with sample records; where the table that is created consists of all the data types (primitive and complex) currently supported by the NoSQL Cloud Service. This example program is referenced in the [Oracle NoSQL Database Analytics Integrator User Guide](https://docs.oracle.com/en/cloud/paas/nosql-cloud/zsons/index.html#articletitle).
  
 The tasks you can perform with this example are:
 
@@ -16,7 +16,7 @@ The program can be executed in one of the three environments listed below. How t
 
 # Requirements
 
-To build and/or execute the program, the followning requirements must be satisfied.
+To build and/or execute the program, the following requirements must be satisfied.
 
 ## Java Version
 
@@ -26,11 +26,11 @@ To build and/or execute the program, the followning requirements must be satisfi
 
   - An account in the Oracle Cloud Infrastructure; either a free trial or a paid subscription.
 
-  https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Tasks/signingup.htm
+	https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Tasks/signingup.htm
 
-  https://www.oracle.com/cloud/free     (to create a free account)
+	https://www.oracle.com/cloud/free     (to create a free account)
 
-  https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/buysubscription.htm#upgrade_promotion   (to upgrade your free account to a paid account)
+	https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/buysubscription.htm#upgrade_promotion   (to upgrade your free account to a paid account)
 
 ## Authentication
  
